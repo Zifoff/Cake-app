@@ -1,25 +1,30 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import SplashScreen from './src/screens/SplashScreen';
+import CitySelectionScreen from './src/screens/CitySelectionScreen';
+
+
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Hello Tany!! 🎉</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Splash">
+        <Stack.Screen 
+          name="Splash" 
+          component={SplashScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen 
+          name="CitySelection" 
+          component={CitySelectionScreen}
+          options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'lightblue',
-  },
-  text: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-});
 
 export default App;
